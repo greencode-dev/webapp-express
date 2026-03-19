@@ -21,18 +21,12 @@ function show(req, res) {
             if (movie.length === 0 || movie[0].id === null) {
                 return res.status(404).json({ error: "Film non trovato", message: "Il film cercato non esiste" });
             }
-            const film = movie[0];
+            const movieObj = movie[0];
            
             db.query(sqlQueryReview, [req.params.id])
                 .then(([reviews]) => {
-                    if (reviews.length === 0 || reviews[0].id === null) {
-                        return res.status(404).json({ error: "Recensione non trovata", message: "La recensione cercata non esiste" });
-                    }
-                    film.reviews = reviews;
-
-                    res.json(film);
-                    
-                    console.log("Movie + Reviews: ", film);
+                    movieObj.reviews = reviews;
+                    res.json(movieObj);
                 })
                 .catch(err => {
                     console.error(err);
