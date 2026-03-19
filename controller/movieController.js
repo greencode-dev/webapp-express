@@ -1,10 +1,10 @@
 import db from "../data/db.js";
 
 function index(req, res) {
-    const sql = "SELECT * FROM movies";
-    db.query(sql)
-        .then(([result]) => {
-            res.json(result);
+    const sqlQuery = "SELECT * FROM movies";
+    db.query(sqlQuery)
+        .then(([movies]) => {
+            res.json(movies);
         })
         .catch(err => {
             console.error(err);
