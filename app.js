@@ -1,5 +1,5 @@
 import express from "express";
-import router from "./router/router.js";
+import router from "./router/movieRouter.js";
 import notFound from "./middleware/notFound.js";
 import errorHandler from "./middleware/errorHandler.js";
 
