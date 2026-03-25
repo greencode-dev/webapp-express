@@ -6,7 +6,7 @@ function index(req, res) {
         .then(([movies]) => {
             const mappedMovies = movies.map(movie => ({
                 ...movie,
-                image: movie.image ? `http://localhost:${process.env.APP_PORT}${movie.image}` : null
+                image: movie.image ? `http://localhost:${process.env.APP_PORT}/movies_cover/${movie.image}` : null
             }));
             res.json(mappedMovies);
         })
@@ -33,7 +33,7 @@ function show(req, res) {
             }
             const movieObj = movie[0];
             if (movieObj.image) {
-                movieObj.image = `http://localhost:${process.env.APP_PORT}${movieObj.image}`;
+                movieObj.image = `http://localhost:${process.env.APP_PORT}/movies_cover/${movieObj.image}`;
             }
            
             db.query(sqlQueryReview, [req.params.id])
